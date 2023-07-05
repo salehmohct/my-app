@@ -1,23 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
-
+import { useRoutes } from "react-router-dom";
+import { router } from "./Router";
+import Header from "./Components/Header";
+import ProductProvider from "./Context/productContext";
 function App() {
+  const Router = useRoutes(router);
+  // const locataion = useLocation(); تستخدم لفحص الموقع الي انا فيه يعني لو بدي اعمل كوندشنال ريندر بناء ع الموقع
+  // console.log(locataion.pathname);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <ProductProvider>
+        <Header />
+        {Router}
+      </ProductProvider>
     </div>
   );
 }
